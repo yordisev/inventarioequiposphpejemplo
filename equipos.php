@@ -1,0 +1,147 @@
+<?php
+include('session.php');
+?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Datos de empleados</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="tabla/bootstrap4.min.css">
+
+	<style>
+		.content {
+			margin-top: 30px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<?php include('nav.php'); ?>
+	</nav>
+	<div class="container">
+		<div class="content">
+			<h2>Lista de Equipos<a href="addequipo.php" class="btn btn-primary pull-right">Agregar Equipo</a></h2>
+
+
+			<?php
+
+			if (empty($_GET['alert'])) {
+				echo "";
+			} elseif ($_GET['alert'] == 1) {
+				echo "<div class='alert alert-success alert-dismissable'>
+		<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+		<h4>  <i class='icon fa fa-check-circle'></i> Exito!</h4>
+	   Equipo Agregado correctamente.
+	  </div>";
+			} elseif ($_GET['alert'] == 2) {
+				echo "<div class='alert alert-warning alert-dismissable'>
+		<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+		<h4>  <i class='icon fa fa-check-circle'></i> Exito!</h4>
+	   Equipo modificado correcamente.
+	  </div>";
+			} elseif ($_GET['alert'] == 3) {
+				echo "<div class='alert alert-danger alert-dismissable'>
+		<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+		<h4>  <i class='icon fa fa-check-circle'></i> Exito!</h4>
+	 Error no se pudo agregar el equipo
+	  </div>";
+			} elseif ($_GET['alert'] == 4) {
+				echo "<div class='alert alert-success alert-dismissable'>
+		<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+		<h4>  <i class='icon fa fa-check-circle'></i> Exito!</h4>
+	   Este Numero de serial ya esta agregado
+	  </div>";
+			} elseif ($_GET['alert'] == 5) {
+				echo "<div class='alert alert-danger alert-dismissable'>
+		  <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+		  <h4>  <i class='icon fa fa-check-circle'></i> Exito!</h4>
+		 Equipo eliminado Correctamente
+		</div>";
+			} elseif ($_GET['alert'] == 6) {
+				echo "<div class='alert alert-success alert-dismissable'>
+		  <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+		  <h4>  <i class='icon fa fa-check-circle'></i> Exito!</h4>
+		 Comentario Agregado Correctamente
+		</div>";
+			}
+			?>
+			<div class="box box-primary">
+				<div class="box-body">
+					<div class="table-responsive">
+						<?php
+						$html['ENTREGADO'] = '<span class="label label-primary">ENTREGADO</span>';
+						$html['DISPONIBLE'] = '<span class="label label-success">DISPONIBLE</span>';
+						$html['DEBAJA'] = '<span class="label label-danger">DEBAJA</span>';
+						$salida = "";
+						$query = "SELECT * FROM db_equipos";
+						if (isset($_POST['consulta'])) {
+							$q = $con->real_escape_string($_POST['consulta']);
+							$query = "SELECT * FROM db_equipos WHERE tipo LIKE '%$q%' OR modelo LIKE '%$q%' OR serial LIKE '%$q%' OR funcionario LIKE '%$q%' OR area LIKE '$q' OR estado LIKE '$q' ";
+						}
+						$resultado = $con->query($query);
+						?>
+						<?php
+						if ($resultado->num_rows > 0) {
+							$salida .= "<table id='mitabla' class='table table-bordered table-striped'>
+    <thead>
+    <tr style='color:white; background-color:#6082b4'>
+        <th>No</th>
+        <th>TIPO</th>
+        <th>MODELO</th>
+        <th>SERIAL</th>
+        <th>FUNCIONARIO</th>
+        <th>AREA</th>
+        <th>ESTADO</th>
+        <th>ACCIONES</th>
+    </tr>
+</thead>
+
+    <tbody>";
+							$no = 1;
+							while ($data = $resultado->fetch_assoc()) {
+								$salida .= '<tr>
+        					<td>' . $no . '</td>
+							<td>' . $data['tipo'] . '</td>
+							<td>' . $data['modelo'] . '</td>
+							<td>' . $data['serial'] . '</td>
+							<td><a href="vistaequipo.php?id=' . $data['serial'] . '"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> ' . $data['funcionario'] . '</a></td>
+              				<td>' . $data['area'] . '</td>
+							<td>' . $html[$data['estado']] . '</td>
+							<td>
+							<a href="editequipo.php?id=' . $data['serial'] . '" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+							<a href="acciones/eliminar.php?aksi=delete&nik=' . $data['serial'] . '" title="Eliminar" onclick="return confirm(\'Esta seguro de borrar los datos ' . $data['serial'] . '?\')" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+							</td>
+                </tr>';
+								$no++;
+							}
+							$salida .= "</tbody></table>";
+						} else {
+							$salida .= "NO HAY DATOS :(";
+						}
+						echo $salida;
+
+						$con->close();
+						?>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function() {
+			$('#mitabla').DataTable();
+		});
+	</script>
+	<script src="tabla/jquery.min.js"></script>
+	<script src="tabla/jquery2.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+.navbar-default {
+    background-color: #6082b4;
+    border-color: #1abc9c;
+}
+
+.navbar-default .navbar-brand {
+    color: #ecf0f1;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #ecf0f1;
+}
+
+.navbar-default .navbar-text {
+    color: #ecf0f1;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #ecf0f1;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    color: #ecf0f1;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #ecf0f1;
+    background-color: #1abc9c;
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
+    color: #ecf0f1;
+    background-color: #1abc9c;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #1abc9c;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #1abc9c;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ecf0f1;
+}
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    border-color: #ecf0f1;
+}
+
+.navbar-default .navbar-link {
+    color: #ecf0f1;
+}
+
+.navbar-default .navbar-link:hover {
+    color: #ecf0f1;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: #ecf0f1;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+        color: #ecf0f1;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a,
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+        color: #ecf0f1;
+        background-color: #1abc9c;
+    }
+}
+
+
+/* menu */
+
+#menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* items del menu */
+
+#menu ul li {
+    background-color: #6082b4;
+}
+
+
+/* enlaces del menu */
+
+#menu ul a {
+    display: block;
+    color: #fff;
+    font-weight: 400;
+    font-size: 15px;
+    padding: 14px;
+    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: transparent;
+    /* text-transform:uppercase; */
+}
+
+
+/* items del menu */
+
+#menu ul li {
+    position: relative;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* efecto al pasar el ratón por los items del menu */
+
+#menu ul li:hover {
+    background: #5b78a7;
+}
+
+
+/* menu desplegable */
+
+#menu ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #eee;
+    padding: 0;
+}
+
+
+/* items del menu desplegable */
+
+#menu ul ul li {
+    float: none;
+    width: 150px
+}
+
+
+/* enlaces de los items del menu desplegable */
+
+#menu ul ul a {
+    line-height: 120%;
+    padding: 10px 15px;
+}
+
+
+/* items del menu desplegable al pasar el ratón */
+
+#menu ul li:hover>ul {
+    display: block;
+}
+
+.caja {
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    background: #229dd6;
+    overflow: hidden;
+    padding: 20px;
+    width: 230px;
+    border-radius: 35px 0px 35px 0px;
+    -moz-border-radius: 35px 0px 35px 0px;
+    -webkit-border-radius: 35px 0px 35px 0px;
+    border: 3px solid #5878ca;
+}
+
+.caja1 {
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    background: #889ccf;
+    margin: 0 0 25px;
+    overflow: hidden;
+    padding: 20px;
+    width: 230px;
+    border-radius: 35px 0px 35px 0px;
+    -moz-border-radius: 35px 0px 35px 0px;
+    -webkit-border-radius: 35px 0px 35px 0px;
+    border: 3px solid #5878ca;
+}
+
+.main-header .logo {
+    display: block;
+    float: left;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    width: 230px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 0 15px;
+    font-weight: 300;
+}
+
+.cajalogin {
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    background: #6082b4;
+    margin: 0 0 25px;
+    overflow: hidden;
+    padding: 40px;
+    /* border-radius: 35px 0px 35px 0px;
+    -moz-border-radius: 35px 0px 35px 0px;
+    -webkit-border-radius: 20px 15px 20px 15px; */
+    border: 3px solid #4953b1;
+}
